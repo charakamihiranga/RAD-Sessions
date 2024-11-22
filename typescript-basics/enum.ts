@@ -45,4 +45,5 @@ const mySize = Size.SMALL;
 console.log(typeof mySize);
 console.log(Size.SMALL);
 console.log(Size.MEDIUM);
-console.log(Size.LARGE);
+console.log(Size.LARGE);    
+
