@@ -7,10 +7,24 @@ let z : number | string | boolean = 1234; // Declares a variable 'z' that can ho
 // Initially, 'z' is assigned the number 1234.
 z = "Hello World"; // Now, 'z' is assigned a string value
 
-console.log(z); 
+// console.log(z); 
 
 // ======== Typescript Arrays =======
 
 let ar1 = [1, 2, 3, 4, 5]; // Declares an array of numbers
 let ar2 = ["Hello", "World"]; // Declares an array of strings
 let ar3 = [1, 2, 3, "Hello", true]; // Declares an array of mixed types
+
+let ar4 = [];
+// let ar5 = any[]=[]; 
+let ar6 : Array<string>; // Declares an array of strings
+ar6 = ["Hello", "World"];
+
+function printarray(ar : number[]) {
+    ar.forEach(element => {
+        console.log(element);
+    });
+}
+
+// printarray(ar2); // string [] not support
+printarray(ar1);
