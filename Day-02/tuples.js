@@ -9,4 +9,7 @@
  */
 var t1 = ['John', 25];
 var t2 = [21, "charaka"];
-console.log(t1);
+// console.log(t1)
+// * tuple elements can be accessed using the index(destructing)
+var x = t1[0], y = t1[1];
+console.log(x, ':::', y);

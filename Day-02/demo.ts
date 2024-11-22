@@ -38,3 +38,4 @@ let ar8 = ['d', 'e', 'f'];
 
 let ar9 = [...ar7,...ar8]; // merge ar7 & ar8 into ar9
 console.log(ar9); 
+

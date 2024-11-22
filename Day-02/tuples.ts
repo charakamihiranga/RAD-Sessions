@@ -11,4 +11,9 @@
 let t1: [string, number] = ['John', 25];
 let t2: [number, string] = [ 21 , "charaka"];
 
-console.log(t1)
+// console.log(t1)
+
+// * tuples can destructure like this
+let [x, y] = t1;
+console.log(x,':::',y); 
+
