@@ -79,15 +79,21 @@ var VIPCustomer = /** @class */ (function () {
 }());
 var Parent = /** @class */ (function () {
     function Parent(message) {
-        console.log(message);
+        console.log(message, 'from parent class');
     }
+    Parent.prototype.myMethod = function (str) {
+        console.log(str);
+    };
     return Parent;
 }());
 var Child = /** @class */ (function (_super) {
     __extends(Child, _super);
     function Child(message) {
-        return _super.call(this, message) || this;
+        var _this = _super.call(this, message) || this;
+        _this.myMethod('hello');
+        return _this;
     }
     return Child;
 }(Parent));
-var child1 = new Child("abc");
+var child1 = new Child("hello world");
+// child1.myMethod('hello'); // protected only be accessed in subclass

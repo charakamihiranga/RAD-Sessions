@@ -58,8 +58,11 @@ var obj2 = {
     x: 10,
     y: 20,
     z: {
-        d: 10
+        d: 10,
+        e: 20
     }
 };
 var x = obj2.x, y = obj2.y, z = obj2.z;
+var _a = obj2.z, d = _a.d, e = _a.e;
 console.log(x, " ", y, " ", z.d);
+console.log(d, " ", e);

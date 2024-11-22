@@ -71,10 +71,13 @@ const obj2 = {
     x:10,
     y:20,
     z : {
-        d: 10
+        d: 10,
+        e: 20
     }
 }
 
 const {x, y, z} = obj2;
+const {d, e} = obj2.z;
 
 console.log(x," ",y," ",z.d);
+console.log(d," ",e);
