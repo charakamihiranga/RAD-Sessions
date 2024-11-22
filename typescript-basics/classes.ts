@@ -89,3 +89,28 @@ class VIPCustomer implements Icustomer{
     tel : string;
     membershipNumber: string;
 }
+
+class Parent{
+    
+    id: string;
+    
+    protected myMethod(str: string){
+        console.log(str);
+        
+    }
+
+    constructor(message: string){
+        console.log(message, 'from parent class');
+        
+    }
+}
+
+class Child extends Parent {
+    constructor(message: string){
+        super(message)
+        this.myMethod('hello')
+    }
+}
+
+const child1 = new Child("hello world");
+// child1.myMethod('hello'); // protected only be accessed in subclass
