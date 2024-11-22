@@ -1,3 +1,11 @@
+// ====== Typescript classes ======
+// In TypeScript, a class is a blueprint for creating objects with specific properties and methods. 
+// Classes allow you to define the structure and behavior of objects in a more organized and reusable way. 
+// A class can contain properties (variables) and methods (functions) that define the characteristics and actions of the objects created from the class.
+// TypeScript classes support features like inheritance, encapsulation, and polymorphism, which are fundamental concepts in object-oriented programming (OOP).
+// In the provided code, the `Student` class has properties like `name`, `address`, and `id`, and methods to set and get these properties.
+// The `setName`, `setAddress`, and `setId` methods are used to assign values to the properties, while the `getName`, `getAddress`, and `getId` methods are used to retrieve these values.
+//
 var Demo = /** @class */ (function () {
     function Demo(myVar) {
         this.myVar = myVar;

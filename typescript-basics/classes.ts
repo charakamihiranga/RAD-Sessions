@@ -42,11 +42,9 @@ class Student{
     setId(id:number):void{
         this.id = id;
     }
-
     setName(name:string):void{
         this.name = name;
     }
-    
     setAddress(address:string):void{
         this.address = address;
     }
@@ -60,6 +58,7 @@ class Student{
     getAddress():string{
         return this.address;
     }
+
 }
 
 const student = new Student();
@@ -72,3 +71,21 @@ console.log(student.getId());
 console.log(student.getName());
 console.log(student.getAddress());
 
+// ts  interface
+interface Icustomer {
+    id : number,
+    name : string,
+    tel : string
+}
+
+class SimpleCustomer implements Icustomer{
+    id : number;
+    name : string;
+    tel : string;
+}
+class VIPCustomer implements Icustomer{
+    id : number;
+    name : string;
+    tel : string;
+    membershipNumber: string;
+}
