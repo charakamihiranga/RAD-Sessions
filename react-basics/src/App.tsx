@@ -1,38 +1,36 @@
 import './App.css';
-import {Subjects} from "./component/Subjects.tsx";
+import { Subjects } from "./component/Subjects.tsx";
+import { useState } from "react";
 
 function App() {
-
     const subjects = [
-        {
-            sName : 'RAD',
-            sDescription : 'lorem ipsum dolor sit amet'
-        },
-        {
-            sName : 'Javascript',
-            sDescription : 'lorem ipsum dolor sit amet'
-        },
-        {
-            sName : 'Typescript',
-            sDescription : 'lorem ipsum dolor sit amet'
-        }
-    ]
+        { sName: 'RAD', sDescription: 'lorem ipsum dolor sit amet' },
+        { sName: 'Javascript', sDescription: 'lorem ipsum dolor sit amet' },
+        { sName: 'Typescript', sDescription: 'lorem ipsum dolor sit amet' }
+    ];
 
-    const handleClick = (btnName: string) => {
-        subjects.map((subject) => {
-            if(subject.sName === btnName) {
-                alert(subject.sDescription+" "+subject.sName);
-            }
-        });
-    }
+    const [content, setContent] = useState("default");
+
+    const handleClick = (name: string) => {
+        const selectedSubject = subjects.find(subject => subject.sName === name);
+        if (selectedSubject) {
+            // Alert before updating state
+            alert(`${selectedSubject.sDescription} - ${selectedSubject.sName}`);
+            setContent(`${selectedSubject.sDescription} - ${selectedSubject.sName}`);
+        }
+    };
 
     return (
         <>
-            <Subjects onselect={handleClick}>{subjects[0].sName}</Subjects>
-            <Subjects onselect={handleClick} >{subjects[1].sName}</Subjects>
-            <Subjects onselect={handleClick} >{subjects[2].sName}</Subjects>
+            {subjects.map(subject => (
+                <Subjects key={subject.sName} onselect={() => handleClick(subject.sName)}>
+                    {subject.sName}
+                </Subjects>
+            ))}
+            <br />
+            <p>{content}</p>
         </>
     );
-}   
+}
 
 export default App;
