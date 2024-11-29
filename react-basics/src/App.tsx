@@ -1,16 +1,36 @@
 import './App.css';
-import { ButtonComponent } from "./component/ButtonComponent";
+import {Subjects} from "./component/Subjects.tsx";
 
 function App() {
 
-    const handleClick = (name: string) => {
-        alert(name + " Clicked!");
+    const subjects = [
+        {
+            sName : 'RAD',
+            sDescription : 'lorem ipsum dolor sit amet'
+        },
+        {
+            sName : 'Javascript',
+            sDescription : 'lorem ipsum dolor sit amet'
+        },
+        {
+            sName : 'Typescript',
+            sDescription : 'lorem ipsum dolor sit amet'
+        }
+    ]
+
+    const handleClick = (btnName: string) => {
+        subjects.map((subject) => {
+            if(subject.sName === btnName) {
+                alert(subject.sDescription+" "+subject.sName);
+            }
+        });
     }
 
     return (
         <>
-            <ButtonComponent onselect={handleClick}>Button A</ButtonComponent>
-            <ButtonComponent onselect={handleClick}>Button B</ButtonComponent>
+            <Subjects onselect={handleClick}>{subjects[0].sName}</Subjects>
+            <Subjects onselect={handleClick} >{subjects[1].sName}</Subjects>
+            <Subjects onselect={handleClick} >{subjects[2].sName}</Subjects>
         </>
     );
 }
