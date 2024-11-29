@@ -1,7 +1,8 @@
-export default function ButtonComponent(props:{name:string}) {
+export default function Item(props:{name:string, desc:string}) {
     return (
         <>
-            <button> {props.name} </button>
+            <h2> {props.name}</h2>
+            <p>{props.desc}</p>
         </>
     );
 }
