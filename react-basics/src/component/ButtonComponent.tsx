@@ -1,17 +1,12 @@
-import {ReactNode} from "react";
+export function ButtonComponent() {
 
-export function ButtonComponent(props : {children:ReactNode}) { // using ReactNode to accept any type of children (string, number, element, etc)
+    const handleClick = () => {
+        alert("Hello, World!");
+    }
+
     return (
         <>
-            <button>{props.children}</button>
+          <button onClick={handleClick}>Click me</button>
         </>
-    )
-}
-
-export function SmallButton({name} : {name : string}) {
-    return (
-        <>
-            <button>{name}</button>
-        </>
-    )
+    );
 }
