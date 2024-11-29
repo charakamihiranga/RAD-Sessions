@@ -1,4 +1,4 @@
-export default function Item(props:{name:string, desc:string}) {
+export function Item(props:{name:string, desc:string}) {
     return (
         <>
             <h2> {props.name}</h2>
