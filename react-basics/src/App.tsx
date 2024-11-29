@@ -1,25 +1,24 @@
 import './App.css';
-import {Item} from "./component/Item.tsx";
-import {itemList} from "./Item.ts";
+import {Dashboard} from "./component/Dashboard.tsx";
+import {Login} from "./component/Login.tsx";
+
 
 
 function App() {
 
-    const itemArray = [];
+  const  isLoggedIn = true;
 
-    for (const item of itemList) {
-        itemArray.push(<Item name={item.name} desc={item.desc} />);
-    }
+  let content;
+
+  if (isLoggedIn) {
+      content = <Dashboard/>
+  } else {
+      content = <Login/>
+  }
 
   return (
       <>
-      {/* {*/}
-      {/*  itemList.map((item, index) => {*/}
-      {/*    return <Item key={index} name={item.name} desc={item.desc} />;*/}
-      {/*  })*/}
-      {/*}*/}
-        {itemArray}
-
+          {content}
       </>
   );
 }
