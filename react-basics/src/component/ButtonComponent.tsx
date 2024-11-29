@@ -1,8 +1,15 @@
-export function Item(props:{name:string, desc:string}) {
+export function ButtonComponent(props : {name : string}) {
     return (
         <>
-            <h2> {props.name}</h2>
-            <p>{props.desc}</p>
+            <button>{props.name}</button>
         </>
-    );
+    )
+}
+
+export function SmallButton({name} : {name : string}) {
+    return (
+        <>
+            <button>{name}</button>
+        </>
+    )
 }

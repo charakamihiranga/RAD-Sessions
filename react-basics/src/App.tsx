@@ -1,5 +1,5 @@
 import './App.css';
-import {Item} from "./component/ButtonComponent.tsx";
+import {Item} from "./component/Item.tsx";
 import {itemList} from "./Item.ts";
 
 
