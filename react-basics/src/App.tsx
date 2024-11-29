@@ -1,17 +1,13 @@
 import './App.css';
-
-import {ButtonComponent} from "./component/ButtonComponent.tsx";
-
-
+import {Subject} from "./component/Subject.tsx";
 
 function App() {
 
-
   return (
       <>
-        <ButtonComponent>Click me</ButtonComponent>
-        <ButtonComponent>Click me</ButtonComponent>
-        <ButtonComponent>Click me</ButtonComponent>
+        <Subject name= 'RAD'> Lorem ipsum dolor sit amet.</Subject>
+        <Subject name= 'RAD'> Lorem ipsum dolor sit amet</Subject>
+        <Subject name= 'RAD'> Lorem ipsum dolor sit amet</Subject>
       </>
   );
 }
