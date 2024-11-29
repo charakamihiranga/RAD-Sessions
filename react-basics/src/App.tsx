@@ -33,6 +33,6 @@ function App() {
             <Subjects onselect={handleClick} >{subjects[2].sName}</Subjects>
         </>
     );
-}
+}   
 
 export default App;
