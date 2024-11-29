@@ -1,3 +1,5 @@
+import {ReactNode} from "react";
+
 export function ButtonComponent(props:{children: ReactNode, onselect:(value: ReactNode) => string}) {
     return (
         <>
@@ -6,4 +8,4 @@ export function ButtonComponent(props:{children: ReactNode, onselect:(value: Rea
     );
 }
 
-import {ReactNode} from "react";
+
