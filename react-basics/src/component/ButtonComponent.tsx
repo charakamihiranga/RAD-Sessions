@@ -1,9 +1,20 @@
-import { ReactNode } from "react";
+import {ReactNode} from "react";
 
-export function ButtonComponent(props: { children: ReactNode; onSelect: (value: ReactNode) => void }) {
+export function ButtonComponent(props : { children : ReactNode , onSelect , count : number}) {
+
+    function handleClick() {
+        if (props.children === "+") {
+            props.onSelect(props.count + 1)
+        } else if (props.children === "-") {
+            props.onSelect(props.count - 1)
+        }
+    }
+
+
     return (
-        <button onClick={() => props.onSelect(props.children)}>
-            {props.children}
-        </button>
-    );
+        <>
+            <button onClick={() =>{handleClick()}}>{props.children}</button>
+        </>
+    )
+
 }
