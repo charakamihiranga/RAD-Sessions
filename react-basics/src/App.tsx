@@ -1,16 +1,24 @@
 import './App.css';
-import {useState} from "react";
+import {ReactNode, useState} from "react";
+import { ButtonComponent } from "./component/ButtonComponent.tsx";
 
 function App() {
-
     const [count, setCount] = useState(0);
+
+    const handleCLick = (value: ReactNode) => {
+        if (value === "Add") {
+            setCount(count + 1);
+        } else if ( value === "Sub") {
+            setCount(count - 1);
+        }
+    };
 
     return (
         <>
             <h1>{count}</h1>
-            <br/>
-            <button onClick={() => setCount(count + 1)}>+</button>
-            <button onClick={() => setCount(count - 1)}>-</button>
+            <br />
+            <ButtonComponent onSelect={handleCLick}>Add</ButtonComponent>
+            <ButtonComponent onSelect={handleCLick}>Sub</ButtonComponent>
         </>
     );
 }
