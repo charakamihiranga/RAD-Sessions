@@ -1,10 +1,11 @@
 import './App.css'
 import {createBrowserRouter} from "react-router";
-import {Dashboard} from "./component/Dashboard.tsx";
+import {Dashboard} from "./pages/Dashboard.tsx";
 import {RouterProvider} from "react-router/dom";
-import {AddCustomer} from "./component/AddCustomer.tsx";
+import {AddCustomer} from "./pages/AddCustomer.tsx";
 import {Error} from "./component/Error.tsx";
 import {RouteLayout} from "./component/RouteLayout.tsx";
+import {CustomerProvider} from "./component/CustomerProvider.tsx";
 
 
 function App() {
@@ -23,8 +24,11 @@ function App() {
 
     return (
         <>
-            <RouterProvider router={routes} >
-            </RouterProvider>
+            <CustomerProvider>
+                <RouterProvider router={routes} >
+                </RouterProvider>
+            </CustomerProvider>
+
         </>
     )
 }

@@ -5,9 +5,7 @@ export function RouteLayout() {
     return (
         <>
             <Navigation />
-            <Outlet>
-
-            </Outlet>
+            <Outlet></Outlet>
         </>
     );
 }
