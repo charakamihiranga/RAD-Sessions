@@ -31,6 +31,7 @@ table {
 table thead th {
   padding: 10px 10px;
   background: black;
+  color: white;
 }
 
 table tbody td {
