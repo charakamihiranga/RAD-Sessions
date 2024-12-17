@@ -6,6 +6,7 @@ import {AddCustomer} from "./pages/AddCustomer.tsx";
 import {Error} from "./component/Error.tsx";
 import {RouteLayout} from "./component/RouteLayout.tsx";
 import {CustomerProvider} from "./component/CustomerProvider.tsx";
+import {UpdateCustomer} from "./pages/UpdateCustomer.tsx";
 
 
 function App() {
@@ -16,7 +17,8 @@ function App() {
             element: <RouteLayout/>,
             children: [
                 {path: '/', element: <Dashboard/>},
-                {path:'add', element: <AddCustomer/>}
+                {path:'add', element: <AddCustomer/>},
+                {path:'update/:email', element: <UpdateCustomer/>}
             ]
         },
         {path: '*', element: <Error/>}
