@@ -1,5 +1,16 @@
-export const initialState = "Name";
 
-export function nameReducer(state: string = initialState, action: { firstName: string, lastName: string }) {
-   return state = action.firstName + " " + action.lastName;
+export const initialState = {
+   firstName : '',
+   lastName : ''
+}
+
+export function nameReducer(
+    state = initialState,
+    action : {type : string , payload: { firstName: string, lastName: string }}) {
+   switch (action.type){
+      case "PUSH_NAME":
+         return {...state, ...action.payload}
+      default:
+         return state;
+   }
 }
