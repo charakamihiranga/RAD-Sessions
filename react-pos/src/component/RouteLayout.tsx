@@ -5,7 +5,10 @@ export function RouteLayout() {
     return (
         <>
             <Navigation />
-            <Outlet></Outlet>
+            <main className="poppins-regular p-4 text-base">
+                <Outlet></Outlet>
+            </main>
+
         </>
     );
 }
