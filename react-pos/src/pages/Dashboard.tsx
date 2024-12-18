@@ -2,7 +2,6 @@ import {Customer} from "../model/Customer.ts";
 import {useContext} from "react";
 import {CustomerContext} from "../component/CustomerProvider.tsx";
 import {useNavigate} from "react-router";
-import {UpdateCustomer} from "./UpdateCustomer.tsx";
 
 
 export function Dashboard() {
