@@ -1,29 +1,22 @@
 import {useReducer, useState} from 'react'
 import './App.css'
-
-function countReducer(state: number, action:{ type:string, payload: number}){
-  switch (action.type) {
-    case "INCREMENT":
-      return state + action.payload;
-    case "DECREMENT":
-      return state - action.payload;
-    default:
-      return state;
-
-  }
-}
+import {nameReducer} from "./reducers/NameReducer.ts";
 
 function App() {
-  const [count, dispatch] = useReducer(countReducer, 0)
+    const [name, dispatch] = useReducer(nameReducer, '')
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
 
-  return (
-    <>
-      <h1>{count}</h1>
-       <br/>
-      <button onClick={()=> dispatch({type:"INCREMENT", payload: 1 })}>Increment</button>
-      <button onClick={()=> dispatch({type:"DECREMENT", payload:1})}>Decrement</button>
-    </>
-  )
+    return (
+        <>
+            <h1>{name}</h1>
+            <br/>
+            <input type="text" onChange={(e) => {setFirstName(e.currentTarget.value)}}/>
+            <input type="text" onChange={(e) => {setLastName(e.currentTarget.value)}}/>
+            <br/>
+            <button onClick={() => dispatch({firstName, lastName})}>Show</button>
+        </>
+    )
 }
 
 export default App
