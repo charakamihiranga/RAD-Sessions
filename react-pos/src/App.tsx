@@ -26,7 +26,7 @@ function App() {
 
     return (
         <>
-            <CustomerProvider>
+            <CustomerProvider> 
                 <RouterProvider router={routes} >
                 </RouterProvider>
             </CustomerProvider>
@@ -35,4 +35,4 @@ function App() {
     )
 }
 
-export default App
+export default App; 
