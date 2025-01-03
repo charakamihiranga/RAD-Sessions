@@ -1,4 +1,8 @@
-import {createStore} from "redux";
-import {CountReducer} from "../reducers/CountReducer.ts";
+import {configureStore} from "@reduxjs/toolkit";
+import customerSlice from "../slice/CustomerSlice.ts";
 
-export const store = createStore(CountReducer)
+export const store = configureStore({
+    reducer: {
+        customer : customerSlice
+    }
+});

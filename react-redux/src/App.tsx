@@ -1,16 +1,24 @@
-import {useDispatch, useSelector} from 'react-redux';
+
 import './App.css'
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import {RootLayout} from "./components/RootLayout.tsx";
+import {Dashboard} from "./pages/Dashboard.tsx";
+import {AddCustomer} from "./pages/AddCustomer.tsx";
 
 function App() {
-  const count = useSelector(state => state);
-  const dispatch = useDispatch();
-
+  const routes = createBrowserRouter([
+    {
+      path: '',
+      element: <RootLayout />,
+      children: [
+        {path: '', element: <Dashboard />},
+        {path: '/add', element: <AddCustomer />},
+      ]
+    },
+  ])
   return (
     <>
-      {count}
-      <br/>
-      <button onClick={() => dispatch({type:'INCREMENT', payload: 1})}>Increment</button>
-      <button onClick={() => dispatch({type:'DECREMENT', payload: 1})}>Decrement</button>
+      < RouterProvider router={routes} />
     </>
   )
 }
