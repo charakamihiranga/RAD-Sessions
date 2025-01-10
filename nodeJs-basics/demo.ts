@@ -1,20 +1,40 @@
 import * as http from "http";
-import * as fs from "fs";
+// import * as fs from "fs"; 
 
 const server = http.createServer((req, res) => {
   if (req.url === "/add") {
-    fs.writeFile("demo.txt", req.url, (err) => {
-        if (err) {
-            res.write("<h1>Error: File not created</h1>");
-        }
-    });
-    res.write("<h1>Hello Customer</h1>");
-    return res.end();
+    res.write("<Html>");
+    res.write("<body>");
+    res.write('<form method="post" action="/dashboard">');
+    res.write('<input type="text" name="Name" />');
+    res.write('<button type="submit" value="Submit" />Submit</button>');
+    res.write("</form>");
+    res.write("</body>");
+    res.write("</Html>");
+    res.end();
   }
-  res.write("<h1>Hello World</h1>");
-  res.end();
-  console.log("Request received", req);
-  process.exit();
+
+  if (req.url === "/dashboard" && req.method === "POST") {
+    const body: Buffer[] = [];
+    req.on("data", (chunk) => {
+      body.push(chunk);
+    });
+
+    req.on("end", () => {
+      const parsedBody = Buffer.concat(body).toString();
+      const name = parsedBody.split("=")[1];
+        console.log(name);
+    });
+
+    res.write("<h1>Dashboard</h1>");
+    res.end();
+  } 
+
+  if (req.url === "/") {
+    res.write("<h1>Landing page...</h1>");
+    res.end();
+  }
+
 });
 
 server.listen(3000, () => {
