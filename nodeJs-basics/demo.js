@@ -1,8 +1,9 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var http = require("http");
-var routes_1 = require("./routes");
-var server = http.createServer(routes_1.routings);
-server.listen(3000, function () {
+import express from "express";
+const server = express();
+server.get('/', (req, res, next) => {
+    console.log(req);
+    res.send('<h1>Express works...</h1>');
+});
+server.listen(3000, () => {
     console.log("Server is listening on port 3000");
 });
