@@ -14,7 +14,7 @@ app.get("/send", (req, res, next) => {
 
 app.post("/message", (req, res, next) => {
   console.log(req.body.message);
-  res.send("<h4>Message Endpoint Called</h4>");
+  res.send("<h3>Message Endpoint Called</h3>");
 });
 
 app.listen(3000, () => {
