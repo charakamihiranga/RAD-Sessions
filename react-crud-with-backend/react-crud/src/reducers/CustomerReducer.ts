@@ -20,6 +20,19 @@ export const saveCustomer = createAsyncThunk(
     }
 );
 
+export const getCustomers = createAsyncThunk(
+    'customer/getCustomers',
+    async ()=>{
+        try{
+            const response = await api.get('/view');
+            return response.data;
+        }catch(err){
+            console.log(err);
+        }
+    }
+)
+
+
 const customerSlice = createSlice({
     name : 'customer',
     initialState,
@@ -40,6 +53,18 @@ const customerSlice = createSlice({
             })
             .addCase(saveCustomer.pending, (state, action) => {
                 console.error("save customer pending");
+            });
+        builder
+            .addCase(getCustomers.fulfilled, (state, action) => {
+                action.payload.map((customer:Customer) => {
+                    state.push(customer);
+                })
+            })
+            .addCase(getCustomers.pending, (state, action) => {
+                console.log("pending get customer:", action.payload);
+            })
+            .addCase(getCustomers.rejected, (state, action) => {
+                console.error("failed to save customer:", action.payload);
             });
     }
 });
