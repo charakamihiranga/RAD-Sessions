@@ -44,10 +44,10 @@ export async function getAllCustomers(){
     }
 }
 
-export async function CustomerUpdate(id: number, c: Customer){
+export async function CustomerUpdate(email: string, c: Customer){
     try{
         const updatedCustomer = await prisma.customer.update({
-            where:{ id : id},
+            where:{ email : email},
             data:{
                 name: c.name,
                 email: c.email,
