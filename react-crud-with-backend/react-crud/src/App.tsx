@@ -8,10 +8,13 @@ function App() {
   useEffect(() => {
     console.log("useEffect triggered:::");
 
-    fetch('http://localhost:3000/')
-        .then(response => response.text())
-        .then(data => console.log(data))
-        .catch((error: any) => console.log(error));
+    async function getText() {
+        const response = await fetch('http://localhost:3000/');
+        const data = await response.text();
+        console.log(data);
+    }
+    getText();
+
   }, [count, count2]);
 
   return (
