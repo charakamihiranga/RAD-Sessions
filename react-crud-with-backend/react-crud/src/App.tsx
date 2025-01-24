@@ -1,50 +1,34 @@
-import { useEffect, useState } from 'react';
-import './App.css';
-import axios from 'axios';
-
+import './App.css'
+import {createBrowserRouter, RouterProvider} from "react-router";
+import {Dashboard} from "./pages/Dashboard";
+import {AddCustomer} from "./pages/AddCustomer";
+import {UpdateCustomer} from "./pages/UpdateCustomer";
+import {DeleteCustomer} from "./pages/DeleteCustomer";
+import {RootLayout} from "./components/RootLayout";
+import {store} from "./store/store";
+import {Provider} from "react-redux";
 function App() {
-  const [count, setCount] = useState(0);
-  const [count2, setCount2] = useState(0);
 
-  const api = axios.create({
-      baseURL: 'http://localhost:3000/',
-  });
-  useEffect(() => {
+    const routes = createBrowserRouter([
+        {
+            path: '',
+            element : <RootLayout/>,
+            children : [
+                { path : '', element : <Dashboard/>},
+                { path : '/add', element : <AddCustomer/>},
+                { path : '/delete', element : <DeleteCustomer/>},
+                { path : '/update', element : <UpdateCustomer/>}
+            ]
+        },
+    ])
 
-    async function getCustomers() {
-        const response = await api.get('getCustomers');
-        console.log(response.data);
-    }
-
-    async function addCustomer() {
-        const customers = [
-            { id: 1, name: 'Vikasitha' }
-        ];
-        const response = await api.post('addCustomer', customers);
-        console.log(response.data);
-    }
-
-    async function updateCustomer() {
-        const customer = [
-            { id: 1, name: 'Charaka' }
-        ];
-        const response = await api.put('updateCustomer', customer);
-        console.log(response.data);
-    }
-
-    getCustomers();
-    addCustomer();
-    updateCustomer()
-  }, [count, count2]);
-
-  return (
-      <>
-        <button onClick={() => setCount(count + 1)}>Count:: {count}</button>
-        <br />
-        <br />
-        <button onClick={() => setCount2(count2 + 1)}>Count:: {count2}</button>
-      </>
-  );
+    return (
+        <>
+            <Provider store={store}>
+                <RouterProvider router={routes} />
+            </Provider>
+        </>
+    );
 }
 
-export default App;
+export default App

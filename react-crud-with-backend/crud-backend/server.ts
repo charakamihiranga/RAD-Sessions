@@ -1,39 +1,22 @@
 import express from 'express';
+import customerRoutes from "./routes/customer-routes";
 
 const app = express();
-app.use(express.json());
 
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+app.use(express.json());
+app.use('/',(req,res,next)=>{
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, content-type');
-    
 
     next();
-});
+})
+app.use('/customer',customerRoutes);
 
-app.get('/getCustomers', (req, res) => {
-    
-  console.log('get request received');
-  const customers = [
-    { id: 1, name: 'Charaka' },
-    { id: 2, name: 'Mihiranga' }
-  ];  
-  res.send(customers);
-  
-});
+app.listen(3000, (err=>{
+    console.log("Server running on port 3000");
+}));
 
-app.post('/addCustomer', (req, res) => { 
-    console.log('add request received');
-    console.log(req.body);
-});
-
-app.put('/updateCustomer', (req, res) => { 
-    console.log('update request received');
-    console.log(req.body);
-});
-
-const PORT = 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+app.use('/',(req,res,next)=>{
+    res.status(200).send('Resource not found');
+})
