@@ -30,7 +30,19 @@ export const getCustomers = createAsyncThunk(
             console.log(err);
         }
     }
-)
+);
+
+export const deleteCustomer = createAsyncThunk(
+    'customer/deleteCustomer',
+     async (email: string) => {
+        try {
+            const response = await api.delete(`/delete/${email}`);
+            return response.data;
+        } catch (error) {
+            console.log('error',error)
+        }
+    }
+);
 
 
 const customerSlice = createSlice({
@@ -66,6 +78,19 @@ const customerSlice = createSlice({
             .addCase(getCustomers.rejected, (state, action) => {
                 console.error("failed to save customer:", action.payload);
             });
+        builder
+            .addCase(deleteCustomer.fulfilled, (state, action) => {
+                const index = state.findIndex((customer: Customer) => customer.email === action.payload.email);
+                state.splice(index, 1);
+                alert("customer deleted successfully");
+            })
+            .addCase(deleteCustomer.rejected, (state, action) => {
+                console.error("failed to delete customer:", action.payload);
+            })
+            .addCase(deleteCustomer.pending, (state, action) => {
+                console.log("pending delete customer:", action.payload);
+            });
+
     }
 });
 
