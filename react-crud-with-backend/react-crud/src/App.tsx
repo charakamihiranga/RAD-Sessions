@@ -16,8 +16,25 @@ function App() {
         console.log(response.data);
     }
 
-    getCustomers();
+    async function addCustomer() {
+        const customers = [
+            { id: 1, name: 'Vikasitha' }
+        ];
+        const response = await api.post('addCustomer', customers);
+        console.log(response.data);
+    }
 
+    async function updateCustomer() {
+        const customer = [
+            { id: 1, name: 'Charaka' }
+        ];
+        const response = await api.put('updateCustomer', customer);
+        console.log(response.data);
+    }
+
+    getCustomers();
+    addCustomer();
+    updateCustomer()
   }, [count, count2]);
 
   return (
