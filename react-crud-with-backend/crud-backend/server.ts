@@ -10,9 +10,14 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get('/', (req, res) => {
+app.get('/getCustomers', (req, res) => {
+    
   console.log('request received');
-    res.send('Hello World!');
+  const customers = [
+    { id: 1, name: 'Charaka' },
+    { id: 2, name: 'Mihiranga' }
+  ];  
+  res.send(customers);
   
 });
 
