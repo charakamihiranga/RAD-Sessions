@@ -6,3 +6,5 @@ export const store = configureStore({
         customer : customerReducer
     }
 })
+
+export type AppDispatch = typeof store.dispatch;
