@@ -1,31 +1,77 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {User} from "../User.ts";
+import axios from "axios";
+import {User} from "../model/User.ts";
 
-export const initialState = '';
+const initialState = {
+    jwt_token: null,
+    refresh_token : null,
+    username: null,
+    isAuthenticated: false,
+    loading: false,
+    error: '',
+};
 
-const authenticateUser= createAsyncThunk(
-    'user/authenticate',
+const api = axios.create({
+    baseURL : "http://localhost:3003"
+})
+
+export const registerUser= createAsyncThunk(
+    'user/register',
     async (user : User)=>{
         try{
-            return user;
+            const response = await api.post('/auth/register', {user},{withCredentials: true});
+            return response.data;
         }catch(err){
             console.log(err);
         }
     }
 )
 
+export const loginUser= createAsyncThunk(
+    'user/login',
+    async (user : User)=>{
+        try{
+            const response = await api.post('/auth/login', {user},{withCredentials: true});
+            return response.data;
+        }catch(err){
+            console.log(err);
+        }
+    }
+)
 const userSlice = createSlice({
     name: 'userReducer',
     initialState,
     reducers:{
-
+        logOutUser(state){
+            state.isAuthenticated = false;
+        }
     },
     extraReducers(builder){
         builder
-            .addCase(authenticateUser.fulfilled,(req,res)=>{
-                console.log('Hello World')
+            .addCase(registerUser.pending,(state, action)=>{
+                console.log('Registering User');
             })
+            .addCase(registerUser.fulfilled,(state, action)=>{
+                alert('User Registered Successfully');
+            })
+            .addCase(registerUser.rejected,(state, action)=>{
+                state.error = action.payload as string;
+            });
+        builder
+            .addCase(loginUser.rejected,(state, action)=>{
+                state.error = action.payload as string;
+                state.isAuthenticated = false;
+            })
+            .addCase(loginUser.fulfilled,(state, action)=>{
+                state.jwt_token = action.payload.accessToken;
+                state.refresh_token = action.payload.refreshToken;
+                state.isAuthenticated = true;
+            })
+            .addCase(loginUser.pending,(state, action)=>{
+                state.isAuthenticated = false;
+            })
+
     }
 });
-
+export const {logOutUser} = userSlice.actions;
 export default userSlice.reducer;
