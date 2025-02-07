@@ -1,4 +1,4 @@
-export class Customer {
+export class CustomerModel {
     name: string;
     email: string;
     mobile: string;
