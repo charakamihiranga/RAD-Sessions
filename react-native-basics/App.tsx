@@ -1,12 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
+import React from "react";
 
 export default function App() {
+  const [count, setCount] = React.useState(0);
+
   return (
-    <View style={styles.container}>
-      <Text>Charaka Mihiranga</Text>
-      <StatusBar style="auto" />
-    </View>
+      <View style={styles.container}>
+        <Text style={styles.countText}>Count is: {count} </Text>
+        <View style={styles.buttonContainer}>
+          <View style={styles.button}>
+            <Button onPress={() => setCount(count + 1)} title="Increment" color="#4CAF50" />
+          </View>
+          <View style={styles.button}>
+            <Button onPress={() => setCount(count - 1)} title="Decrement" color="#F44336" />
+          </View>
+        </View>
+        <StatusBar style="auto" />
+      </View>
   );
 }
 
@@ -17,4 +28,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  countText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 20,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    gap: 10,
+  },
+  button: {
+    borderRadius: 8,
+    overflow: 'hidden',
+  },
 });
+
